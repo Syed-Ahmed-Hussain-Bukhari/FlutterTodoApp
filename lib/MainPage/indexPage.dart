@@ -51,6 +51,7 @@ category(context,Image image,String txt){
     child: Container(
      margin: EdgeInsets.all(6),
       child: TextFormField(
+       readOnly: true,
        onTap:  (){
        todoCategory=txt;
          setState(() {
@@ -100,6 +101,7 @@ flagContainer(String txt){
                      child: Container(
                       margin: EdgeInsets.all(6),
                        child: TextFormField(
+                        readOnly: true,
                         onTap:  (){
                         flag=txt;
                           setState(() {
@@ -320,7 +322,7 @@ Future<dynamic> taskPriority(BuildContext context)async{
                        Navigator.pop(context);
                     },
                     child:  Container(
-                      padding: EdgeInsets.only(left: 40,right: 40,bottom: 10,top: 10),
+                      padding: EdgeInsets.only(left: 30,right: 30,bottom: 10,top: 10),
                       decoration: BoxDecoration(
                         color: utils.mybgColor,
                         borderRadius: BorderRadius.circular(5),
@@ -339,7 +341,7 @@ Future<dynamic> taskPriority(BuildContext context)async{
                       Navigator.pop(context);
                     },
                     child:  Container(
-                      padding: EdgeInsets.only(left: 40,right: 40,bottom: 10,top: 10),
+                      padding: EdgeInsets.only(left: 30,right: 30,bottom: 10,top: 10),
                       decoration: BoxDecoration(
                         color: utils.primaryColor,
                         borderRadius: BorderRadius.circular(5),
@@ -463,9 +465,7 @@ Future<dynamic> dialogBox(context) async {
                     alignment: Alignment.bottomRight,
                      child:InkWell(
                       onTap: (){
-                        var _datetime="${date} at ${time}";
-                     
-
+                        
                         var categoryImage="assets/images/mortarboard 1.png";
 
                        if(todoCategory=="Groceroy"){
@@ -511,7 +511,7 @@ Future<dynamic> dialogBox(context) async {
                         setState(() {
                           
                         });
-                         addTodoTask(context, titleController.text.toString(), discriptionController.text.toString(),FireBase_flag.toString(),FireBase_Category.toString(),_datetime.toString(),categoryImage);
+                         addTodoTask(context, titleController.text.toString(), discriptionController.text.toString(),FireBase_flag.toString(),FireBase_Category.toString(),time.toString(),date.toString(),categoryImage);
                       },
                       child: Image.asset("assets/images/send.png")), 
                   ),
@@ -528,13 +528,14 @@ Future<dynamic> dialogBox(context) async {
 
    categoryDialogBox(context){
     return showDialog(context: context, builder: (context)=>AlertDialog(
-      contentPadding: EdgeInsets.all(50),
+      contentPadding: EdgeInsets.only(left: 4,right: 4),
       backgroundColor: utils.mybgColor,
       content: SingleChildScrollView(
         child: Container(
           child: Column(
             
             children: [
+              SizedBox(height: 12,),
               Container(child: Text("Choose Category",style: TextStyle(color: utils.myWhiteColor,fontSize: 16,fontWeight: FontWeight.bold),),),
                  SizedBox(height: 9,),
                  const Divider(height:2,thickness: 1,),
@@ -544,13 +545,20 @@ Future<dynamic> dialogBox(context) async {
                 children: [
                   category(context, Image.asset("assets/images/bread 1.png"), "Groceroy"),
                   category(context, Image.asset("assets/images/briefcase 1.png"), "Work"),
-                  category(context, Image.asset("assets/images/sport 1.png"), "Sport")
+
                 ],
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  category(context, Image.asset("assets/images/sport 1.png"), "Sport"),
                   category(context, Image.asset("assets/images/design (1) 1.png"), "Design"),
+                 
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
                   category(context, Image.asset("assets/images/Vector.png"), "Home"),
                   category(context, Image.asset("assets/images/megaphone 1.png"), "Social")
                 ],
@@ -561,17 +569,18 @@ Future<dynamic> dialogBox(context) async {
                 children: [
                   category(context, Image.asset("assets/images/music (1) 1.png"), "Music"),
                   category(context, Image.asset("assets/images/heartbeat 1.png"), "Health"),
-                  category(context, Image.asset("assets/images/video-camera 1.png"), "Movie")
+                  
                 ],
               ),
 
               Row(
                 children: [
+                  category(context, Image.asset("assets/images/video-camera 1.png"), "Movie"),
                   category(context, Image.asset("assets/images/mortarboard 1.png"), "University"),
                   
                 ],
               ),
-              SizedBox(height: 16,),
+              SizedBox(height: 20,),
                Center(
                  child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -626,7 +635,8 @@ Future<dynamic> dialogBox(context) async {
                  
                   ],
                              ),
-               )
+               ),
+                SizedBox(height: 16,),
 
 
 
@@ -658,7 +668,7 @@ Future<dynamic> dialogBox(context) async {
           leading: Icon(Icons.wifi,color: Colors.white,),
           backgroundColor: Colors.black,
           actions: [
-            CircleAvatar(backgroundImage:AssetImage("assets/images/f1.jpg"),),
+            CircleAvatar(backgroundImage:NetworkImage("https://thumbs.dreamstime.com/b/silhouette-person-icon-black-circular-frame-silhouette-person-icon-black-circular-frame-vector-graphic-218821794.jpg"),),
            SizedBox(width: 12,),
           ],
         ),

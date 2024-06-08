@@ -30,7 +30,7 @@ class MyProfilePage extends StatelessWidget {
                  child: Container(
                   child: CircleAvatar(
                     radius: 34,
-                    backgroundImage: AssetImage("assets/images/f1.jpg"),
+                    backgroundImage: NetworkImage("https://thumbs.dreamstime.com/b/silhouette-person-icon-black-circular-frame-silhouette-person-icon-black-circular-frame-vector-graphic-218821794.jpg"),
                   ),
                  ),
                ),
